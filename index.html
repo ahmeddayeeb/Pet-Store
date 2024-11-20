@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Claws Pet Store</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            border-radius: 50%;
+            margin-right: 2rem;
+            width: 80px;
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Main Content Styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Pet Cards */
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        article {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+        }
+
+        article img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        article h3 {
+            padding: 1rem;
+            background: #3498db;
+            color: white;
+        }
+
+        article p {
+            padding: 1rem;
+        }
+
+        article ul {
+            padding: 0 1rem 1rem 2rem;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Services List */
+        .services-list {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .services-list li {
+            background: #f8f9fa;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        /* Form Styles */
+        form {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* Map Section */
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        footer nav {
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .logo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .pet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80" alt="Paws & Claws Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#pets">Available Pets</a></li>
+                    <li><a href="#supplies">Pet Supplies</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <h1>Welcome to Paws & Claws Pet Store</h1>
+            <p>Your one-stop shop for all things pets! We provide quality pets, supplies, and services to ensure your furry friends live their best lives.</p>
+        </section>
+
+        <section id="pets">
+            <h2>Available Pets</h2>
+            <div class="pet-grid">
+                <article>
+                    <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Adorable puppies">
+                    <h3>Dogs</h3>
+                    <p>Find your perfect canine companion from our selection of lovingly raised puppies.</p>
+                    <ul>
+                        <li>Golden Retrievers</li>
+                        <li>Labrador Retrievers</li>
+                        <li>German Shepherds</li>
+                        <li>French Bulldogs</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Cute kittens">
+                    <h3>Cats</h3>
+                    <p>Discover your ideal feline friend from our selection of playful kittens.</p>
+                    <ul>
+                        <li>Persian Cats</li>
+                        <li>Maine Coons</li>
+                        <li>Siamese Cats</li>
+                        <li>British Shorthairs</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="supplies">
+            <h2>Pet Supplies</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Items</th>
+                        <th>Price Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Food</td>
+                        <td>Premium Dry Food, Wet Food, Treats</td>
+                        <td>$10 - $60</td>
+                    </tr>
+                    <tr>
+                        <td>Toys</td>
+                        <td>Balls, Chew Toys, Interactive Games</td>
+                        <td>$5 - $30</td>
+                    </tr>
+                    <tr>
+                        <td>Accessories</td>
+                        <td>Collars, Leashes, Beds</td>
+                        <td>$15 - $100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ol class="services-list">
+                <li>
+                    <h3>Grooming</h3>
+                    <p>Professional grooming services for all breeds</p>
+                </li>
+                <li>
+                    <h3>Veterinary Care</h3>
+                    <p>Regular check-ups and preventive care</p>
+                </li>
+                <li>
+                    <h3>Training Classes</h3>
+                    <p>Group and private training sessions</p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form action="/submit" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Interest:</label>
+                    <select id="service" name="service">
+                        <option value="">Select a service</option>
+                        <option value="adoption">Pet Adoption</option>
+                        <option value="grooming">Grooming</option>
+                        <option value="veterinary">Veterinary Care</option>
+                        <option value="training">Training</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section id="location">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.827278666667!2d36.85000000000001!3d-1.2833333333333334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a880000001%3A0x182f11a880000001!2sEastleigh%20BBS%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1627641600000!5m2!1sen!2ske"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Paws & Claws Pet Store. All rights reserved.</p>
+            <nav>
+                <a href="https://example.com/pet-care-guide">Pet Care Guides</a>
+                <a href="https://example.com/blog">Blog</a>
+                <a href="https://example.com/careers">Careers</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
